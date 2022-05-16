@@ -1,5 +1,5 @@
 --Spotify data was downloaded from Kaggle.
---Data was then imported into Microsoft SQL Server from Excel file populated with Spotify.csv data and parsed into a table.
+--Data was converted from .csv to .xlsx, then imported into Microsoft SQL Server and parsed into the database table.
 --Analytics were then made using SQL queries on Microsoft SQL Server Management Studio.
 --A Tableau dashboard was then created which can be found at https://public.tableau.com/app/profile/audrey6156/viz/SpotifyTop1002021/SpotifyTop100
 
