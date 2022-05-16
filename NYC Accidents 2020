@@ -1,0 +1,28 @@
+--Data for NYC accidents in 202 was downloaded from the Maven Data Playground.
+--NYC accident data was then converted from .csv to .xlsx and parsed into a database table.
+--Analytics were made using SQL queries on Microsoft SQL Server Management Studio.
+
+--Percentage of total accidents by month.
+SELECT MONTH(crash_date) AS id, DATENAME(month, crash_date) AS month, COUNT(*) AS num_of_crashes, COUNT(*)*100.0/SUM(COUNT(*)) OVER() AS crash_percent 
+	FROM NYCA_DB..NYCAccidents2020
+	GROUP BY MONTH(crash_date), DATENAME(month, crash_date)
+	ORDER BY MONTH(crash_date);
+
+--Break down of accident frequency by day of week.
+SELECT DATEPART(weekday, crash_date) AS id, DATENAME(weekday, crash_date) AS day, COUNT(crash_date) AS total_crashes
+	FROM NYCA_DB..NYCAccidents2020
+	GROUP BY DATEPART(weekday, crash_date), DATENAME(weekday, crash_date)
+	ORDER BY DATEPART(weekday, crash_date);
+
+--Street with the most to least reported accidents and percentage of all reported accidents.
+SELECT CONCAT(on_street_name, off_street_name) AS location, COUNT(*) AS  total_crashes, COUNT(*)*100.0/SUM(COUNT(*)) OVER() AS crash_percent, latitude, longitude, location
+	FROM NYCA_DB..NYCAccidents2020
+	GROUP BY CONCAT(on_street_name, off_street_name), latitude, longitude, location
+	ORDER BY COUNT(*) DESC;
+
+--Most common contributing factor for the accidents reported in this sample based on Vehicle 1. Total fatal accidents per category.
+SELECT contributing_factor_vehicle_1, SUM(persons_killed) AS sum_fatalities, COUNT(*) AS total_contributing_factor
+	FROM NYCA_DB..NYCAccidents2020
+	WHERE contributing_factor_vehicle_1 IS NOT NULL
+	GROUP BY contributing_factor_vehicle_1
+	ORDER BY COUNT(*) DESC;
