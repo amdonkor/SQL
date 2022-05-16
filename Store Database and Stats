@@ -1,0 +1,33 @@
+--Create the store database.
+CREATE TABLE store (id INTEGER PRIMARY KEY, name TEXT, section TEXT, price INTEGER, inventory INTEGER);
+
+INSERT INTO store VALUES (1, 'Conte Crayons', 'Art Supplies', 9, 20);
+INSERT INTO store VALUES (2, 'Spooky Skull Mug', 'Kitchen', 9, 10);
+INSERT INTO store VALUES (3, 'Candy', 'Food', 2, 15);
+INSERT INTO store VALUES (4, 'Mouse Pad', 'Art Supplies', 12, 20);
+INSERT INTO store VALUES (5, 'Cute Kitty Notebook', 'Art Supplies', 3, 30);
+INSERT INTO store VALUES (6, 'Big Sketchbook', 'Art Supplies', 14, 5);
+INSERT INTO store VALUES (7, 'Color Theory Book', 'Books', 30, 5);
+INSERT INTO store VALUES (8, 'Copic Markers', 'Art Supplies', 7, 200);
+INSERT INTO store VALUES (9, 'Candied Apples', 'Food', 3, 25);
+INSERT INTO store VALUES (10, 'Skirt', 'Clothing', 16, 30);
+INSERT INTO store VALUES (11, 'Cat hoodie', 'Clothing', 30, 50);
+INSERT INTO store VALUES (12, 'Skeleton Cat Sticker', 'Gift', 6, 90);
+INSERT INTO store VALUES (13, 'Cute Ghost Sticker', 'Gift', 6, 90);
+INSERT INTO store VALUES (14, 'King Cat Sticker', 'Gift', 6, 90);
+INSERT INTO store VALUES (15, 'Art print', 'Gift', 30, 20);
+
+--Display database ordered by price.
+SELECT * FROM ADPP_DB..store
+	ORDER BY price DESC;
+
+--Average price of items for art supplies.
+SELECT AVG(price) AS price_avg
+	FROM ADPP_DB..store
+	WHERE section LIKE 'Art Supplies';
+
+--Five items with the greatest inventory.
+SELECT TOP 5 name, inventory
+	FROM ADPP_DB..store
+	ORDER BY inventory DESC;
+	;
