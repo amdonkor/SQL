@@ -1,0 +1,30 @@
+/* An SQL database that tracks reps and sets of progressive load workout. */
+
+--Create table for workout logs
+CREATE TABLE workout_logs (
+    id INTEGER PRIMARY KEY,
+    week INTEGER,
+    date TEXT,
+    exercise TEXT,
+    rep_set_1 INTEGER default "N/A",
+    rep_set_2 INTEGER default "N/A",
+    rep_set_3 INTEGER default "N/A",
+    weight_lbs INTEGER);
+
+--Insert reps and sets into workout log table    
+INSERT INTO workout_logs (id, week, date, exercise, rep_set_1, rep_set_2, rep_set_3, weight_lbs) VALUES (1, 1, "3-16-2022", "Bench Press", 5, 5, 5, 67.5);
+INSERT INTO workout_logs (id, week, date, exercise, rep_set_1, rep_set_2, rep_set_3, weight_lbs) VALUES (2, 1, "3-16-2022", "Landmine Row", 5, 5, 5, 95);
+INSERT INTO workout_logs (id, week, date, exercise, rep_set_1, rep_set_2, rep_set_3, weight_lbs) VALUES (3, 1, "3-16-2022", "Landmine Squat", 5, 5, 5, 102.5);
+INSERT INTO workout_logs (id, week, date, exercise, rep_set_1, rep_set_2, rep_set_3, weight_lbs) VALUES (4, 1, "3-16-2022", "Barbell Hip Thrust", 5, 5, 5, 95);
+
+--Select and display workout log table.
+SELECT * FROM workout_logs;
+
+--Update workout log to reflect a change in the amount of reps for the third exercise set.
+UPDATE workout_logs SET rep_set_3 = 6 WHERE id = 4;
+SELECT * FROM workout_logs;
+
+--Delete second entry from workout log.
+DELETE FROM workout_logs WHERE id = 2;
+SELECT * FROM workout_logs;
+
