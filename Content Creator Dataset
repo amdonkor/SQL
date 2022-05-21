@@ -1,0 +1,45 @@
+/* Information compiled from Wikipedia and Virtual YouTuber Wiki 
+A small database of content creators, their platform, notable work, and awards using SQLite.
+*/
+
+--Create table of content creators
+CREATE TABLE contentcreators (id INTEGER PRIMARY KEY,
+     alias TEXT, years_active INTEGER, occupation1 INTEGER, occupation2 INTEGER, platform INTEGER, notable_work TEXT, awards TEXT);
+
+--Create table for platform names     
+CREATE TABLE platforms (id INTEGER PRIMARY KEY,
+    platform_name TEXT);
+
+--Create table for occupation names    
+CREATE TABLE occupations (id INTEGER PRIMARY KEY, occupation_name TEXT);
+
+--Insert platform names into platform table    
+INSERT INTO platforms VALUES (1, "Youtube");
+INSERT INTO platforms VALUES (2, "Twitch");
+INSERT INTO platforms VALUES (3, "Spotify");
+
+--Insert content creator occupations into occupation table
+INSERT INTO occupations VALUES (1, "Streamer");
+INSERT INTO occupations VALUES (2, "Youtuber");
+INSERT INTO occupations VALUES (3, "Music Artist");
+INSERT INTO occupations VALUES (4, "vTuber");
+INSERT INTO occupations VALUES (5, "Voice Actor");
+
+--Insert content creator data into content creator table.    
+INSERT INTO contentcreators (alias, years_active, occupation1, platform, notable_work, awards) VALUES ("Valkyrae", 2022-2014, 1, 1, "Daywalker Music Video Appearance", "2020 Gaming Creator of the Year");
+INSERT INTO contentcreators (alias, years_active, occupation1, occupation2, platform, notable_work, awards) VALUES ("Disguised Toast", 2022-2015, 1, 2, 2,"Inferno Music Video Appearance", "2022 Best Strategy Game Streamer");
+INSERT INTO contentcreators (alias, years_active, occupation1, occupation2, platform, notable_work, awards) VALUES ("Corpse Husband", 2022-2012, 3, 2, 3, "English Voice Actor for Ojiro Otori", "RIAA: Gold for 'E-Girls are Ruining My Life'");
+INSERT INTO contentcreators (alias, years_active, occupation1, occupation2, platform, notable_work, awards) VALUES ("Lilypichu", 2022-2006, 1, 3, 2,"English Voice Actor for Sayu in Genshin Impact", "2022 Best Music Streamer");
+INSERT INTO contentcreators (alias, years_active, occupation1, platform, notable_work, awards) VALUES ("Jacksepticeye", 2022-2012, 2, 1, "'How Did We Get Here?' Biographical documentary", "2022 Best Philantrophic Streamer");
+INSERT INTO contentcreators (alias, years_active, occupation1, platform, notable_work, awards) VALUES ("Markiplier", 2022-2012, 2, 1,"Unus Annus", "2020 Scripted Series 'A Heist with Markiplier'");
+INSERT INTO contentcreators (alias, years_active, occupation1, platform, notable_work, awards) VALUES ("Code Miko", 2022-2017, 4, 2, "CodeMiko Interview Show", "2022 Best vTuber Streamer");
+
+--Select content creator table, join platform and occupation tables.    
+SELECT contentcreators.alias, contentcreators.years_active, a.occupation_name as occupation1, b.occupation_name as occupation2,platforms.platform_name, contentcreators.notable_work, contentcreators.awards
+    FROM contentcreators
+    LEFT OUTER JOIN platforms
+    ON contentcreators.platform = platforms.id
+    LEFT OUTER JOIN occupations a
+    ON contentcreators.occupation1 = a.id
+    LEFT OUTER JOIN occupations b
+    ON contentcreators.occupation2 = b.id;
