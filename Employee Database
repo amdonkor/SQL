@@ -15,7 +15,7 @@ Salary int)
 
 --Insert employee information into employee demographics table
 INSERT INTO EmployeeDemographics VALUES
-(1001, 'Jim', 'Halpert', 30, 'Male')
+(1001, 'Jim', 'Halpert', 30, 'Male'),
 (1002, 'Pam', 'Beasley', 30, 'Female'),
 (1003, 'Dwight', 'Schrute', 29, 'Male'),
 (1004, 'Angela', 'Martin', 31, 'Female'),
