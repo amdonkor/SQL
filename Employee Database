@@ -1,7 +1,3 @@
-Data for NYC accidents in 202 was downloaded from the Maven Data Playground.
-NYC accident data was then converted from .csv to .xlsx and parsed into a database table.
-Analytics were made using SQL queries on Microsoft SQL Server Management Studio.
-
 --Create employee demographic table
 CREATE TABLE EmployeeDemographics
 (EmployeeID int,
