@@ -1,4 +1,4 @@
---Data for NYC accidents in 202 was downloaded from the Maven Data Playground.
+--Data for NYC accidents in 2020 was downloaded from the Maven Data Playground.
 --NYC accident data was then converted from .csv to .xlsx and parsed into a database table.
 --Analytics were made using SQL queries on Microsoft SQL Server Management Studio.
 
